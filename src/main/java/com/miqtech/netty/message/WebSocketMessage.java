@@ -1,4 +1,4 @@
-package com.miqtech.netty.entity;
+package com.miqtech.netty.message;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

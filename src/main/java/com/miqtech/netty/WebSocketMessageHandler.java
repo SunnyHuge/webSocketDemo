@@ -2,8 +2,8 @@ package com.miqtech.netty;
 
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.miqtech.netty.entity.ChatMessage;
-import com.miqtech.netty.entity.WebSocketMessage;
+import com.miqtech.netty.message.ChatMessage;
+import com.miqtech.netty.message.WebSocketMessage;
 import com.miqtech.netty.util.JsonUtils;
 import io.netty.channel.Channel;
 import io.netty.channel.group.ChannelGroup;
@@ -23,14 +23,14 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author zhangyuqi
  * @create 2017年07月15日
  */
-public class MessageHandler {
+public class WebSocketMessageHandler {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(MessageHandler.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(WebSocketMessageHandler.class);
 
 	/**
 	 * 私有构造器
 	 */
-	private MessageHandler() {
+	private WebSocketMessageHandler() {
 
 	}
 
@@ -38,13 +38,13 @@ public class MessageHandler {
 	 * 匿名内部类实现单列模式
 	 */
 	private static class MessageHandlerHolder {
-		private static final MessageHandler INSTANCE = new MessageHandler();
+		private static final WebSocketMessageHandler INSTANCE = new WebSocketMessageHandler();
 	}
 
 	/**
 	 * 获取单列方法
 	 */
-	public static MessageHandler getInstance() {
+	public static WebSocketMessageHandler getInstance() {
 		return MessageHandlerHolder.INSTANCE;
 	}
 

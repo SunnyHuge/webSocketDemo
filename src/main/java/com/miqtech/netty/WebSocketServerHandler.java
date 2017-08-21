@@ -2,7 +2,7 @@ package com.miqtech.netty;
 
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.miqtech.netty.entity.WebSocketMessage;
+import com.miqtech.netty.message.WebSocketMessage;
 import com.miqtech.netty.util.JsonUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -134,7 +134,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
 					JsonNode.class);
 			WebSocketMessage<JsonNode> node = JsonUtils.OBJECT_MAPPER.readValue(message, javaType);
 			// 消息处理
-			String responseMsg = MessageHandler.getInstance().messageHandler(ctx.channel(), node);
+			String responseMsg = WebSocketMessageHandler.getInstance().messageHandler(ctx.channel(), node);
 
 			// 消息回执
 			if (StringUtils.isNotBlank(responseMsg)) {
